@@ -22,7 +22,7 @@ title: GovStack Working Groups Hub
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   On this site you will find all working groups and their activity at GovStack.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/working-groups" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: GovStackGlobal
 github_username:  GovStackWorkingGroup
