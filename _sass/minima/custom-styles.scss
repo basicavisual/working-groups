@@ -1,0 +1,102 @@
+
+$status-active-dark: #28A745;
+$status-active-light: #D4EDDA;
+$status-paused-dark: #FFC107;
+$status-paused-light: #FFE8A1;
+$status-closed-dark: #DC3545;
+$status-closed-light: #F8D7DA;
+
+
+.card {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 1em;
+  h2 a {
+    font-weight: bold;
+    color: black;
+    &:hover {
+      color: #1756a9;
+    }
+  }
+}
+
+.working-groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.wrapper {
+  max-width: calc(1200px - 30px * 2);
+}
+
+.button {
+  display: inline-block;
+  background-color: #1756a9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  &:hover {
+    background-color: #0f3d7f;
+    color: white;
+  }
+  &:visited {
+    color: white;
+  }
+}
+
+.badge {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 0.25em 0.5em;
+  margin-right: 0.5em;
+  font-weight: bold;
+}
+
+.badge-active {
+  background-color: $status-active-light;
+  color: $status-active-dark;
+  border-color: $status-active-dark;
+}
+
+.badge-paused {
+  background-color: $status-paused-light;
+  color: $status-paused-dark;
+  border-color: $status-paused-dark;
+}
+
+.badge-closed {
+  background-color: $status-closed-light;
+  color: $status-closed-dark;
+  border-color: $status-closed-dark;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 800px) {
+  .group-status {
+    width: 20%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .group-status {
+    width: 100%;
+  }
+}
+
+
+section {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e4e4e4;
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+

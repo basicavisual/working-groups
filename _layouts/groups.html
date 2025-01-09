@@ -1,0 +1,176 @@
+---
+layout: default
+---
+
+<section>
+  <h1 class="page-heading bold">{{page.name}} Working Group</h1>
+  <p>{{page.scope}}</p>
+
+  <table class="group-status">
+    <tr>
+      <td class="bold">Status</td>
+      <td>
+        <div class="badge badge-{{page.status | downcase}}">{{page.status }}</div>
+      </td>
+    </tr>
+  </table>
+</section>
+<section id="index">
+  <h2>Index</h2>
+</section>
+<section id="members">
+  <h2>Members</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Interests & Contribution</th>
+    </tr>
+  {% for member in page.members %}
+    <tr>
+      <td>
+        {% if member.linkedin %}
+          <a href="{{member.linkedin}}" target="_blank" rel="noopener noreferrer">{{member.name}}</a>
+          {% else %}
+            {{member.name}}
+        {% endif %}
+      </td>
+      <td>{{member.interests}}</td>
+    </tr>
+  {% endfor %}
+  </table>
+</section>
+<section id="meetings">
+  <h2>Meetings</h2>
+  <p>{{page.meeting.text}}</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Calendar invite</th>
+    </tr>
+  {% for event in page.events %}
+    <tr>
+      <td>{{event.short_name}}</td>
+      <td>
+        <add-to-calendar-button 
+          name="{{event.name}}"
+          startDate={{event.start_date}}
+          startTime={{event.start_time}}
+          endDate={{event.end_date}}
+          endTime={{event.end_time}}
+          timeZone={{event.time_zone}}
+          location={{event.location}}
+          organizer="{{event.organizer_name}}|{{event.organizer_email}}"
+          recurrence={{event.recurrence}}
+          recurrence_interval={{event.recurrence_interval}}
+          recurrence_byDay={{event.recurrence_by_day}}
+          availability={{event.availability}}
+          options="'Apple','Google','iCal','Outlook.com','Yahoo','Microsoft365','MicrosoftTeams'"
+        ></add-to-calendar-button>
+    </td>
+  </tr>
+  {% endfor %}
+  </table>
+
+  <h3>Meeting minutes</h3>
+  {% if page.meeting-minutes == null %}
+    <p>No meeting minutes available yet.</p>
+  {% else %}
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Minute</th>
+      </tr>
+    {% for minute in page.meeting-minutes %}
+      <tr>
+        <td>{{minute.name}}</td>
+        <td>{{minute.date}}</td>
+        <td><a href="{{minute.url}}" target="_blank">Go to minute</a></td>
+      </tr>
+    {% endfor %}      
+    </table>
+  {% endif %}
+</section>
+
+<section id="published-specs">
+  <h2>Published Specifications</h2>
+  {% if page.published_specs == null %}
+    <p>No specifications published yet.</p>
+  {% else %}
+  <div class="working-groups">
+    {% for spec in page.published_specs %}
+      <div class="card">
+        <h3 class="bold"><a href="{{spec.url}}" target="_blank">{{spec.name}}</a></h4>
+        <p>{{spec.short_description}}</p>
+        <a href="{{spec.url}}">Read more</a>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+<section id="current-projects">
+  <h2>Current Projects</h2>
+  <div class="working-groups">
+    {% for project in page.current_projects %}
+    <div class="card">
+      <h3 class="bold"><a href="{{project.url}}" target="_blank">{{project.name}}</a></h3>
+      <p>{{project.short_description}}</p>
+      <a href="{{project.url}}" target="_blank">Read more</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="tools">
+  <h2>Working Group tools</h2>
+  {% for element in page.join %}
+  <div style="margin-bottom: 1rem;">
+    <a class="button" href="{{element.url}}" target="_blank">{{element.name}}</a>
+  </div>
+  {% endfor %}
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>
+
+<script>
+// Function to collect all IDs and build an index of anchor tags using the content of the first h2 element
+function buildAnchorIndex() {
+  // Collect all elements with an ID, excluding the index container
+  const allElements = document.querySelectorAll('[id]:not(#index)');
+  const indexContainer = document.getElementById('index');
+
+  // Check if the container exists
+  if (!indexContainer) {
+    console.error('Index container not found');
+    return;
+  }
+
+  // Create a list element to hold the index
+  const list = document.createElement('ul');
+
+  allElements.forEach((element) => {
+    const id = element.id;
+    const firstH2 = element.querySelector('h2');
+
+    // Proceed only if a first h2 element is found
+    if (firstH2) {
+      // Create a list item with an anchor tag linking to the ID and using the h2 content as text
+      const listItem = document.createElement('li');
+      const anchor = document.createElement('a');
+      anchor.href = `#${id}`;
+      anchor.textContent = firstH2.textContent;
+
+      listItem.appendChild(anchor);
+      list.appendChild(listItem);
+    }
+  });
+
+  // Append the list to the index container
+  indexContainer.appendChild(list);
+}
+
+// Call the function to build the index
+buildAnchorIndex();
+</script>
