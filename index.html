@@ -6,17 +6,24 @@ layout: home
 title: Welcome to the Hub
 subtitle: The objective of this site is to provide a public space where Working Groups can communicate the work they are doing, and get more participants.
 ---
+<section>
 
-<h2>Browse working groups</h2>
-<div class="working-groups">
-{% for group in site.groups %}
-  <div class="card">
-    <h2><a href="{{group.url | relative_url}}">{{ group.name }}</a></h2>
-    <p>{{group.scope}}</p>
-    <a href="{{group.url | relative_url}}">Go to group</a>
+  <h2>Browse working groups</h2>
+  <div class="working-groups">
+    {% for group in site.groups %}
+    <div class="card">
+      <h2><a href="{{group.url | relative_url}}">{{ group.name }}</a></h2>
+      <p>{{group.scope}}</p>
+      <a href="{{group.url | relative_url}}">Go to group</a>
+    </div>
+    
+    {% endfor %}
+    
   </div>
+  
+</section>
 
-{% endfor %}
-
-</div>
-
+<section>
+  <h2>See all events</h2>
+  <img src="{{site.baseurl}}/assets/files/meetings.png" alt="">
+</section>

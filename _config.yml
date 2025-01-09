@@ -37,6 +37,8 @@ collections:
     output: true
   specs:
     output: true
+  events:
+    output: true
 
 sass:
     sass_dir: _sass

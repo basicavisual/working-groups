@@ -47,7 +47,8 @@ layout: default
       <th>Name</th>
       <th>Calendar invite</th>
     </tr>
-  {% for event in page.events %}
+    {% assign events = site.events | where: "working-group", "ux-ui" %}
+  {% for event in events %}
     <tr>
       <td>{{event.short_name}}</td>
       <td>
@@ -130,6 +131,8 @@ layout: default
   </div>
   {% endfor %}
 </section>
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2" async defer></script>

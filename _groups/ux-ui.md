@@ -32,7 +32,7 @@ meeting-minutes:
   - name: GSM-1
     date: 2025-01-01
     url: http://example.org/
-events:
+events: 
   - name: "GovStack - UX-UI WG weekly session - Morning"
     short_name: "Morning Weekly session"
     start_date: "2025-01-09"
