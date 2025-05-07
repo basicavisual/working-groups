@@ -17,15 +17,12 @@ members:
     special-position-name: Chair
     interests: Service & Interaction design, planning and feedback
 
-  - name: Jakita Fleming
-    linkedin: https://www.linkedin.com/in/jakitafleming/
-    special-position: false
-    interests: Product designer
-  
-  - name: Toby Colthorpe
-    linkedin: 
-    special-position: false
-    interests: 	Front End developer
+  - name: Stefan Draškić
+    linkedin: https://www.linkedin.com/in/stefan-dra%C5%A1ki%C4%87-20702b113/
+    special-position: true
+    special-position-name: Chair
+    interests:  Digital Product Design | Digital Transformation | GovTech
+
 meeting:
   text: Every Thursday at 1-1:30pm GMT http://meet.google.com/ewq-krvj-vmy
 meeting-minutes:
